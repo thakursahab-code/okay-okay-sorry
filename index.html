@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Okay Okay Sorry 😌</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 850px;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.buttons {
+  position: relative;
+  height: 340px;
+  margin-top: 35px;
+}
+
+button {
+  position: absolute;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.no {
+  background: #ff4d6d;
+  color: white;
+}
+
+.yes {
+  background: #fff;
+  color: #ff4d6d;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Okay okay… meri galti thi 🙈</h1>
+
+  <p id="text">
+    Lekin itni bhi nahi thi ki itna cute gussa kiya jaaye 😏
+  </p>
+
+  <div class="buttons" id="buttons"></div>
+</div>
+
+<script>
+const lines = [
+  "Ab gussa chhod bhi do, woh ek daant miss ho raha hai 😌",
+  "Itna ignore mat karo, phone bhi bore ho gaya hai",
+  "Haan maanta hoon, thoda sa pagalpan tha",
+  "Par tumhara gussa bhi kaafi cute hota hai 🙈",
+  "Aankhen laal ho gayi hongi gussa karte karte 😬",
+  "Chalo na, ek smile to banti hai",
+  "Itna bhaav mat khao, calories burn nahi hoti 😏",
+  "Tum naraz hoti ho to aur zyada pretty lagti ho",
+  "Waise bhi main sorry bol raha hoon… itni mehnat ke saath",
+  "Button bhaag raha hai, par main nahi bhaag raha 😌",
+  "Mujhe pata hai tum yahin kahin smile kar rahi ho",
+  "Bas bas, ab overacting band karo madam 😄",
+  "Gussa kam, pyaar zyada please",
+  "Tum maaf kar do, main pucchi dunga 🍫",
+  "Tumhari hasi is game ka final goal hai",
+  "Ab to thoda sa blush aa hi gaya hoga 😳",
+  "Dekha… tum ignore kar hi nahi paati mujhe",
+  "Ek smile = free apology accepted",
+  "Main phir bhi cute hoon, right? 😌",
+  "Last few levels bache hain… himmat rakho",
+  "Tumhe jeetna hi padega is game me",
+  "Aur jeet ka matlab… mujhe maaf karna 😏",
+  "Bas ek click door ho tum",
+  "Okay final offer… extra pyaar ke saath sorry ❤️",
+  "Ab maan bhi jao na… please 🙈"
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const box = document.getElementById("buttons");
+
+// small vibration function
+function vibrateShort() {
+  if (navigator.vibrate) navigator.vibrate(50);
+}
+function vibrateLong() {
+  if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 200]);
+}
+
+// 24 NO buttons
+for (let n = 0; n < 24; n++) {
+  const b = document.createElement("button");
+  b.className = "no";
+  b.innerText = "Abhi bhi gussa hoon 😤";
+  random(b);
+
+  b.onclick = () => {
+    vibrateShort();
+    text.innerText = lines[i % lines.length];
+    i++;
+    random(b);
+  };
+
+  box.appendChild(b);
+}
+
+// YES button
+const yes = document.createElement("button");
+yes.className = "yes";
+yes.innerText = "Okay maaf kiya 😳❤️";
+yes.style.bottom = "10px";
+yes.style.left = "50%";
+yes.style.transform = "translateX(-50%)";
+
+yes.onclick = () => {
+  vibrateLong();
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#ff4d6d;
+      color:white;
+      font-family:Segoe UI;
+      text-align:center;
+      padding:40px;">
+      <div>
+        <h1>I LOVE YOU MERI BETI ❤️</h1>
+        <p style="font-size:22px; line-height:1.8;">
+          Dekha… zyada der gussa reh hi nahi paati tum 😌  
+          <br><br>
+          Thank you for forgiving me.  
+          <br>
+          Ab smile wapas rakho,  
+          tum gussa me achhi lagti ho  
+          par smile me sabse zyada ❤️
+        </p>
+      </div>
+    </div>`;
+};
+
+box.appendChild(yes);
+
+function random(btn) {
+  btn.style.top = Math.random() * 280 + "px";
+  btn.style.left = Math.random() * 650 + "px";
+}
+</script>
+</body>
+</html>
